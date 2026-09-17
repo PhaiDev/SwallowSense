@@ -10,15 +10,20 @@
 SwallowSense/
 ├── backend/
 │   ├── detection/
-│   │   └── mock_engine.py       # Mock sensor & swallowing scenario generator
+│   │   ├── eating_detector.py   # MediaPipe Face & Hand Landmark eating detector
+│   │   ├── face_landmarker.task # Face Landmark model
+│   │   ├── hand_landmarker.task # Hand Landmark model
 │   ├── models/
 │   │   └── event.py             # Event & Risk schemas (Pydantic)
 │   ├── services/
+│   │   ├── device_service.py    # Auto-discovery for Camera & Microphone devices
+│   │   ├── audio_service.py     # Live Microphone Stream & Cough Detection
+│   │   ├── camera_service.py    # Background Camera Detection & MJPEG Stream Manager
 │   │   ├── risk_service.py      # Confidence-weighted Risk Assessment
 │   │   ├── notification_service.py # LINE Messaging API / LINE Notify & Mock alert
 │   │   └── websocket_manager.py # Real-time dashboard broadcast
 │   ├── database.py              # SQLite event storage (aiosqlite)
-│   └── main.py                  # FastAPI Application & WebSockets
+│   └── main.py                  # FastAPI Application, Stream Endpoints & WebSockets
 │
 ├── frontend/                    # Vite + React (TypeScript) + Tailwind CSS
 │   ├── src/
